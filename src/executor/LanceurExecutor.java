@@ -19,6 +19,7 @@ public class LanceurExecutor {
 			@Override
 			public Integer call() throws Exception {
 
+				System.out.println(Thread.currentThread().getName());
 				Thread.sleep(4000);
 				return 3;
 			}
@@ -39,6 +40,18 @@ public class LanceurExecutor {
 		}
 		
 		execs.shutdown();
+		
+		
+		ExecutorService pool = Executors.newFixedThreadPool(4);
+		pool.submit(monCallable);
+		pool.submit(monCallable);
+		pool.submit(monCallable);
+		pool.submit(monCallable);
+		
+		pool.submit(monCallable);
+		pool.submit(monCallable);
+		pool.shutdown();
+		
 
 	}
 
