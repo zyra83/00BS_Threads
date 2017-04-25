@@ -2,6 +2,10 @@ package model.entities;
 
 public class ThreadTortue extends Thread {
 
+	public ThreadTortue() {
+		super("Thread tortue");
+	}
+
 	/**
 	 * 1 seconde pour faire 10 mètres.
 	 */
@@ -15,7 +19,8 @@ public class ThreadTortue extends Thread {
 				e.printStackTrace();
 			}
 
-			System.out.printf("Le %s a parcouru %sm%n", this.getClass().getSimpleName(), i * 10);
+			System.out.printf("[Thread:%s] Le %s a parcouru %sm%n", Thread.currentThread().getName(),
+					this.getClass().getSimpleName(), i * 10);
 		}
 	}
 
