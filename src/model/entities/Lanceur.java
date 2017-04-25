@@ -21,9 +21,15 @@ public class Lanceur {
 	private static void goThread() {
 		Thread tt = new ThreadTortue();
 		Thread tl = new ThreadLievre();
+		
+		// Appelle RUN dans un autre Thread
 		tt.start();
 		tl.start();
-
+		
+		// Appelle RUN dans le même Thread, c'est pas bon !!
+		// tt.run();
+		// tl.run();
+				
 		
 		// ça c'est dans le Thread principal, pas bloqué par les 2 autres Thread.
 		System.out.println("FIN DE LA COURSE");
