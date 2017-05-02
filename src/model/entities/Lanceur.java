@@ -27,7 +27,7 @@ public class Lanceur {
 		
 		new Thread(rll, "Course du lièvre").start();;
 		new Thread(rlt, "Course de la tortue").start();
-
+		System.out.println("Faire gueuler Sonar en PR.");
 	}
 
 	/**
