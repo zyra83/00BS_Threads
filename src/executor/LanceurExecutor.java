@@ -23,6 +23,7 @@ public class LanceurExecutor {
 			public Integer call() throws Exception {
                                 log.log(Level.INFO, Thread.currentThread().getName());
 				Thread.sleep(4000);
+				System.out.println("Coucou sonar !");
 				return 3;
 			}
 		};
