@@ -1,7 +1,6 @@
 package executor;
 
 import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
@@ -22,8 +21,7 @@ public class LanceurExecutor {
 
 			@Override
 			public Integer call() throws Exception {
-
-				System.out.println(Thread.currentThread().getName());
+                                log.log(Level.INFO, Thread.currentThread().getName());
 				Thread.sleep(4000);
 				return 3;
 			}
@@ -34,7 +32,10 @@ public class LanceurExecutor {
 		Future<Integer> f = execs.submit(monCallable);
 		try {
 			Integer retour = f.get();
-			log.log(Level.INFO, String.format("j'ai eu le retour %s%n", retour));
+                        if (log.isLoggable(Level.INFO)) {
+                                log.log(Level.INFO, String.format("j'ai eu le retour %s%n", retour));
+                        }
+			
 		} catch (Exception e ) {
 			log.log(Level.WARNING, e.getMessage(), e);
 		}
