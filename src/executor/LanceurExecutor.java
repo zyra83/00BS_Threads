@@ -38,7 +38,7 @@ public class LanceurExecutor {
                         }
 			
 		} catch (Exception e ) {
-			log.log(Level.WARNING, e.getMessage(), e);
+			
 		}
 		
 		execs.shutdown();
