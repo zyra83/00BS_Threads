@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 
 public class LanceurExecutor {
     
-        public static Logger log = Logger.getLogger(LanceurExecutor.class.getName());
+        public static final Logger log = Logger.getLogger(LanceurExecutor.class.getName());
 
 	public static void main(String[] args) {
 
@@ -34,11 +34,9 @@ public class LanceurExecutor {
 		Future<Integer> f = execs.submit(monCallable);
 		try {
 			Integer retour = f.get();
-			log.log(Level.INFO, "j'ai eu le retour %s%n", retour);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		} catch (ExecutionException e) {
-			e.printStackTrace();
+			log.log(Level.INFO, String.format("j'ai eu le retour %s%n", retour));
+		} catch (Exception e ) {
+			log.log(Level.WARNING, e.getMessage(), e);
 		}
 		
 		execs.shutdown();
