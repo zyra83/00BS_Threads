@@ -5,8 +5,12 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class LanceurExecutor {
+    
+        public static Logger log = Logger.getLogger(LanceurExecutor.class.getName());
 
 	public static void main(String[] args) {
 
@@ -28,11 +32,9 @@ public class LanceurExecutor {
 		ExecutorService execs = Executors.newSingleThreadExecutor();
 
 		Future<Integer> f = execs.submit(monCallable);
-		System.out.println("suite");
 		try {
 			Integer retour = f.get();
-			System.out.printf("j'ai eu le retour %s%n", retour);
-                        System.out.println("Coucou sonar !");
+			log.log(Level.INFO, "j'ai eu le retour %s%n", retour);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		} catch (ExecutionException e) {
